@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Sharp Zombie · Revisión de campaña — SWE</title>
+<meta name="description" content="Revisión de la campaña Sharp Zombie (Rioja · Spanish Wine Exclusives): todo el material producido y las decisiones para elegir rumbo." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0a0a; --ink-2:#111113; --paper:#161618;
+  --blood:#8b0000; --red:#d11722; --red-soft:rgba(209,23,34,.16);
+  --caution:#ffd600; --caution-700:#a98b00;
+  --silver:#c9cdd2; --glow:#39ff14;
+  --sakura:#ffb7c5; --lavanda:#c9b8f0;
+  --muted:rgba(255,255,255,.66); --border:rgba(255,255,255,.12);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --display:'Anton',Impact,var(--font);
+  --maxw:1060px;
+}
+html{scroll-behavior:smooth}
+section{scroll-margin-top:64px}
+body{font-family:var(--font);background:var(--ink);color:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-bottom:86px;overflow-x:clip}
+section{overflow-x:clip}
+img,video{max-width:100%}
+button{font-family:var(--font);cursor:pointer}
+a{color:var(--caution)}
+
+/* ---------- motivos de marca ---------- */
+.tape{height:12px;background:repeating-linear-gradient(45deg,var(--caution) 0 16px,#0a0a0a 16px 32px);opacity:.92}
+.tape.thin{height:7px}
+.kicker{display:inline-flex;align-items:center;gap:.6em;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--caution)}
+.kicker::before{content:"";width:26px;height:3px;background:var(--caution);border-radius:2px}
+.title{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.98}
+h1.title{font-size:clamp(42px,9vw,86px)}
+h2.title{font-size:clamp(30px,6.4vw,54px)}
+h3.subtitle{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(19px,4.6vw,26px);letter-spacing:.02em}
+.lead{font-size:clamp(15.5px,1.8vw,19px);line-height:1.55;color:var(--muted);max-width:60ch}
+.yellow{color:var(--caution)} .redc{color:var(--red)} .glowc{color:var(--glow);text-shadow:0 0 14px rgba(57,255,20,.45)}
+.wm{display:inline-flex;flex-direction:column;gap:6px;line-height:1}
+.wm__sz{font-family:var(--display);text-transform:uppercase;color:var(--caution);font-size:var(--wsz,30px);letter-spacing:.02em;transform:skewX(-5deg);text-shadow:0 0 18px rgba(255,214,0,.25)}
+.wm__tag{font-size:calc(var(--wsz,30px)*.24);letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;transform:skewX(-5deg)}
+.chip{display:inline-block;padding:10px 16px;border-radius:14px;background:rgba(10,10,10,.55);border:1px solid rgba(255,214,0,.35);color:#fff;font-size:13.5px;line-height:1.5;backdrop-filter:blur(6px)}
+.chip b{color:var(--caution)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+section{padding:clamp(44px,8vw,84px) 0;position:relative}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:clamp(22px,4vw,34px)}
+.gletter{position:absolute;top:8px;right:-6px;font-family:var(--display);font-size:clamp(120px,30vw,260px);line-height:1;color:rgba(255,255,255,.035);pointer-events:none;user-select:none;z-index:0}
+.sec-body{position:relative;z-index:1}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- hero ---------- */
+.hero{min-height:88svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:0}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.55) 0%,rgba(8,8,8,.35) 40%,rgba(8,8,8,.96) 88%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(28px,6vw,54px);width:100%}
+.hero h1{max-width:12ch;margin-top:14px}
+.hero .lead{margin-top:14px;color:rgba(255,255,255,.85)}
+.hero .chip{margin-top:22px}
+
+/* ---------- nav pills ---------- */
+.nav{position:sticky;top:0;z-index:40;background:rgba(10,10,10,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav .in{display:flex;gap:8px;overflow-x:auto;padding:10px clamp(16px,4vw,32px);scrollbar-width:none;max-width:var(--maxw);margin:0 auto}
+.nav .in::-webkit-scrollbar{display:none}
+.nav::after{content:"";position:absolute;right:0;top:0;bottom:0;width:34px;background:linear-gradient(90deg,transparent,rgba(10,10,10,.95));pointer-events:none}
+.nav a{flex:none;padding:9px 15px;border-radius:999px;font-size:13px;font-weight:600;color:rgba(255,255,255,.8);text-decoration:none;border:1px solid var(--border);background:rgba(255,255,255,.04)}
+.nav a.on{background:var(--caution);color:#0a0a0a;border-color:var(--caution)}
+
+/* ---------- cards / stats ---------- */
+.card{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:clamp(16px,2.6vw,26px);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;height:100%;width:4px;background:var(--red)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,2vw,24px)}
+.stat .n{font-family:var(--display);font-size:clamp(34px,8vw,66px);line-height:.92}
+.stat .n span{color:var(--caution)}
+.stat .l{margin-top:6px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.lineas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,18px);margin-top:clamp(20px,3.5vw,30px)}
+.linea-card h3{font-size:15.5px;font-weight:700;margin-top:2px}
+.linea-card .lc-k{font-family:var(--display);font-size:26px;color:var(--caution);line-height:1}
+.linea-card p{margin-top:6px;font-size:13px;line-height:1.45;color:var(--muted)}
+.status{display:inline-block;margin-top:10px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.status.ok{color:#0a0a0a;background:var(--glow)}
+.status.mid{color:#0a0a0a;background:var(--caution)}
+.status.dev{color:#fff;background:#2c2c31;border:1px solid var(--border)}
+
+/* ---------- steps (cómo funciona) ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,18px)}
+.step{background:var(--paper);border:1px solid var(--border);border-radius:16px;padding:18px;position:relative;overflow:hidden}
+.step .nu{font-family:var(--display);font-size:30px;color:var(--caution);line-height:1}
+.step h3{margin-top:10px;font-size:14.5px;font-weight:700}
+.step p{margin-top:6px;font-size:13px;line-height:1.45;color:var(--muted)}
+.step::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background:repeating-linear-gradient(45deg,var(--caution) 0 12px,#0a0a0a 12px 24px)}
+
+/* ---------- players / galerías ---------- */
+.player{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#000;box-shadow:0 40px 90px -34px rgba(0,0,0,.8)}
+.player video{display:block;width:100%;height:auto;background:#000}
+.badge{position:absolute;top:10px;left:10px;z-index:3;display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;background:rgba(10,10,10,.72);border:1px solid rgba(255,214,0,.4);font-size:11.5px;font-weight:600;backdrop-filter:blur(6px)}
+.badge .d{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red)}
+.grid{display:grid;gap:12px}
+.grid.g2{grid-template-columns:repeat(2,1fr)}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.vcard{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0d0d0f;cursor:pointer}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.ph-skel{background:linear-gradient(110deg,#101012 30%,#1b1b20 50%,#101012 70%);background-size:200% 100%;animation:shimmer 1.6s linear infinite}
+.vcard .ph{position:relative;aspect-ratio:var(--ar,16/9);background:#0d0d0f}
+.vcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vcard .ph .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(transparent 40%,rgba(0,0,0,.72))}
+.vcard .ph .play::before{content:"";width:52px;height:52px;border-radius:50%;background:rgba(10,10,10,.68) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffd600'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/26px no-repeat;border:1.5px solid rgba(255,214,0,.55);box-shadow:0 8px 30px rgba(0,0,0,.6)}
+.vcard .dur{position:absolute;top:8px;right:8px;z-index:2;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:6px;background:rgba(10,10,10,.75);border:1px solid var(--border)}
+.vcard video{display:block;width:100%;aspect-ratio:var(--ar,16/9);object-fit:contain;background:#000}
+.vcap,.icap{padding:10px 12px;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.icard{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0d0d0f;cursor:zoom-in}
+.icard .ph{position:relative;aspect-ratio:var(--ar,16/9);overflow:hidden;background:#0d0d0f}
+.icard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.icard:active .ph img{transform:scale(1.04)}
+.subsec{margin-top:clamp(28px,5vw,42px)}
+.subsec>.subhead{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.subsec .count{font-size:12.5px;color:rgba(255,255,255,.75);font-weight:600}
+.note{margin-top:12px;font-size:13px;line-height:1.5;color:var(--muted);border-left:3px solid var(--caution);padding:10px 14px;background:rgba(255,214,0,.06);border-radius:0 10px 10px 0}
+.note.glow{border-color:var(--glow);background:rgba(57,255,20,.06)}
+.note.pink{border-color:var(--sakura);background:rgba(255,183,197,.07)}
+
+/* tabs comparador */
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tab{padding:11px 18px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:#fff;font-size:13.5px;font-weight:700;min-height:44px}
+.tab.on{background:var(--caution);color:#0a0a0a;border-color:var(--caution)}
+.phone{margin:0 auto;border-radius:32px;border:9px solid #0e0e10;background:#0e0e10;overflow:hidden;width:min(300px,78vw);box-shadow:0 44px 90px -32px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.06)}
+
+/* secciones temáticas */
+#linea-b .kicker{color:var(--sakura)} #linea-b .kicker::before{background:var(--sakura)}
+#linea-b .card::before{background:var(--lavanda)}
+#linea-c{background:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);background-size:14px 14px;background-color:var(--ink-2)}
+.glow-zone .subhead .subtitle{color:var(--glow);text-shadow:0 0 16px rgba(57,255,20,.4)}
+
+/* ---------- decisiones ---------- */
+.decision{margin-top:clamp(26px,5vw,38px);background:var(--ink-2);border:1px dashed rgba(255,214,0,.45);border-radius:18px;padding:clamp(16px,3vw,26px);position:relative}
+.decision::before{content:"DECISIÓN";position:absolute;top:-9px;left:18px;font-size:10px;font-weight:800;letter-spacing:.18em;color:#0a0a0a;background:var(--caution);padding:2px 10px;border-radius:999px}
+.decision h4{font-size:clamp(15.5px,2vw,18px);font-weight:800;margin-bottom:4px}
+.decision .dq{font-size:13px;color:var(--muted);margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips .opt{min-height:48px;padding:12px 18px;border-radius:14px;border:1.5px solid var(--border);background:rgba(255,255,255,.045);color:#fff;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:9px;transition:border-color .2s,background .2s}
+.chips .opt .mk{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.4);display:grid;place-items:center;flex:none;font-size:11px;font-weight:900;color:#0a0a0a}
+.chips .opt.sel{border-color:var(--caution);background:rgba(255,214,0,.13)}
+.chips .opt.sel .mk{background:var(--caution);border-color:var(--caution)}
+.chips .opt.sel .mk::after{content:"✓"}
+.zgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.zopt{border:2px solid var(--border);border-radius:14px;overflow:hidden;background:#0d0d0f;padding:0;text-align:left;transition:border-color .2s}
+.zopt img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+.zopt .zl{padding:10px 12px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px}
+.zopt .zl small{display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:2px}
+.zopt.sel{border-color:var(--caution);box-shadow:0 0 0 3px rgba(255,214,0,.25)}
+.zopt.sel .zl::after{content:"✓";margin-left:auto;color:#0a0a0a;background:var(--caution);width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:900;flex:none}
+
+/* ---------- rumbo / resumen votos ---------- */
+#rumbo{background:linear-gradient(180deg,var(--ink) 0%,#131309 60%,var(--ink) 100%)}
+.votes{display:grid;gap:8px;margin-top:18px}
+.vote-row{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.vote-row .st{margin-left:auto;font-weight:700;color:var(--caution);text-align:right}
+.vote-row .st.empty{color:rgba(255,255,255,.35);font-weight:500}
+.comments{margin-top:16px;width:100%;min-height:96px;background:var(--paper);border:1px solid var(--border);border-radius:12px;color:#fff;padding:12px 14px;font-size:14px;font-family:var(--font);resize:vertical}
+.comments:focus{outline:2px solid var(--caution)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:13px 24px;border-radius:14px;font-size:15px;font-weight:800;border:none;text-decoration:none}
+.btn.primary{background:var(--caution);color:#0a0a0a;box-shadow:0 12px 40px -12px rgba(255,214,0,.5)}
+.btn.ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--border)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* ---------- sticky bar / modal / toast / lightbox ---------- */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(12,12,13,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(255,214,0,.3);transform:translateY(110%);transition:transform .35s ease}
+.sticky.show{transform:none}
+.sticky .in{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px clamp(14px,4vw,32px) calc(10px + env(safe-area-inset-bottom))}
+.sticky .prog{font-size:13px;font-weight:700;white-space:nowrap}
+.sticky .prog small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+.sticky .btn{margin-left:auto;min-height:44px;padding:10px 18px;font-size:13.5px}
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(3,3,3,.96);display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(6px)}
+.overlay.show{display:flex}
+.sheet{width:100%;max-width:560px;max-height:88svh;overflow:auto;background:var(--ink-2);border:1px solid var(--border);border-radius:22px 22px 0 0;padding:22px clamp(16px,4vw,28px) calc(24px + env(safe-area-inset-bottom))}
+.sheet h3{font-family:var(--display);text-transform:uppercase;font-size:22px;margin-bottom:4px}
+.sheet .sub{font-size:13px;color:var(--muted);margin-bottom:14px}
+.sheet pre{white-space:pre-wrap;font-family:var(--font);font-size:13.5px;line-height:1.55;background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:14px;color:rgba(255,255,255,.88)}
+.sheet{position:relative}
+.sheet .close{position:absolute;top:10px;right:10px;width:44px;height:44px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:50%;color:#fff;font-size:22px;line-height:1}
+.toast{position:fixed;top:14px;left:50%;transform:translate(-50%,-200%);z-index:70;background:var(--caution);color:#0a0a0a;font-size:13px;font-weight:800;padding:9px 18px;border-radius:999px;transition:transform .3s ease;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.toast.show{transform:translate(-50%,0)}
+.lightbox{position:fixed;inset:0;z-index:65;background:rgba(3,3,3,.96);display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px}
+.lightbox.show{display:flex}
+.lightbox img{max-width:100%;max-height:78svh;border-radius:10px}
+.lightbox .cap{margin-top:12px;font-size:13px;color:var(--muted);text-align:center;max-width:60ch}
+.lightbox .lbx{position:absolute;top:14px;right:16px;background:rgba(255,255,255,.1);border:1px solid var(--border);color:#fff;width:44px;height:44px;border-radius:50%;font-size:20px}
+.lightbox .lnav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border);color:#fff;font-size:20px}
+.lightbox .lprev{left:10px}.lightbox .lnext{right:10px}
+
+/* ---------- roadmap / footer ---------- */
+.road{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.road .item{background:var(--paper);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:flex-start}
+.road .ph2{flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-family:var(--display);font-size:18px;background:#26262a}
+.road .item.done .ph2{background:var(--caution);color:#0a0a0a}
+.road h3{font-size:15px;font-weight:700}
+.road p{margin-top:4px;font-size:12.5px;line-height:1.45;color:var(--muted)}
+footer{padding:34px 0 46px;border-top:1px solid var(--border)}
+.pillrow{display:flex;flex-wrap:wrap;gap:9px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid var(--border)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--caution)}
+
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .lineas{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .grid.g3{grid-template-columns:repeat(2,1fr)}
+  .road{grid-template-columns:1fr}
+  .two{grid-template-columns:1fr}
+}
+@media (min-width:761px){ .two{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start} }
+@media (prefers-reduced-motion:reduce){ .reveal{transition:none;opacity:1;transform:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <img class="hero__bg" src="https://mohamedmadrazo.github.io/swe-sz-media/img/deck_cover.webp" alt="Viñedos de La Rioja bajo la luna llena" fetchpriority="high" />
+  <div class="hero__scrim"></div>
+  <div class="wrap">
+    <span class="wm" style="--wsz:clamp(30px,6vw,52px)"><span class="wm__sz">Sharp Zombie</span><span class="wm__tag">Rioja · Spanish Wine Exclusives</span></span>
+    <div style="margin-top:22px"><span class="kicker">Revisión de campaña · Julio 2026</span></div>
+    <h1 class="title">Todo lo producido, en una sola página</h1>
+    <p class="lead">Tres caminos creativos, dos másters terminados y más de 50 piezas. Míralo con calma, toca tus elecciones y decidimos juntos el rumbo.</p>
+    <span class="chip">Preparado para <b>María Álvarez Gárate · SWE</b> por Streamline3X</span>
+  </div>
+</header>
+<div class="tape" role="presentation"></div>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Secciones"><div class="in">
+  <a href="#resumen">Resumen</a>
+  <a href="#linea-a">Thriller EE.UU.</a>
+  <a href="#linea-b">Anime Japón</a>
+  <a href="#linea-c">💥 Cómic</a>
+  <a href="#tagline">Tagline</a>
+  <a href="#rumbo">⭐ Decidir</a>
+</div></nav>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Cómo funciona</span><h2 class="title">Tú mandas: tres pasos</h2></div>
+    <div class="steps reveal">
+      <div class="step"><div class="nu">01</div><h3>Mira cada línea creativa</h3><p>Reproduce los vídeos y abre las imágenes. Todo es material real ya producido.</p></div>
+      <div class="step"><div class="nu">02</div><h3>Toca tus elecciones</h3><p>Verás bloques de <b style="color:var(--caution)">DECISIÓN</b> por el camino. Se guardan solas en tu móvil.</p></div>
+      <div class="step"><div class="nu">03</div><h3>Envía al final</h3><p>Abajo del todo hay un botón que nos manda tu selección por email. Dos toques y listo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN -->
+<section id="resumen" style="background:var(--ink-2)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Resumen ejecutivo</span><h2 class="title">Una campaña real, no una maqueta</h2></div>
+    <div class="stats reveal">
+      <div class="stat"><div class="n">3</div><div class="l">líneas creativas</div></div>
+      <div class="stat"><div class="n">56<span>+</span></div><div class="l">piezas producidas</div></div>
+      <div class="stat"><div class="n">30</div><div class="l">vídeos generados</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">másters listos</div></div>
+    </div>
+    <div class="lineas">
+      <div class="card linea-card reveal"><div class="lc-k">A</div><h3>EE.UU. — “Thriller meets Rioja”</h3><p>Terror glamuroso realista. Anuncio completo editado con música, en 16:9 y 9:16.</p><span class="status ok">Masterizada · lista</span></div>
+      <div class="card linea-card reveal"><div class="lc-k">B</div><h3>Japón — “Gurokawa”</h3><p>Anime creepy-cute para el mercado japonés. Escenas producidas; el montaje final se renderiza cuando elijas formato.</p><span class="status mid">Producida · montaje pendiente</span></div>
+      <div class="card linea-card reveal"><div class="lc-k">C</div><h3>💥 Cómic — “Spider-Verse”</h3><p>Anuncio 60s estilo cómic animado. Storyboard completo, personajes y clips piloto ya generados.</p><span class="status dev">Storyboard + piloto</span></div>
+    </div>
+  </div>
+</section>
+<div class="tape thin" role="presentation"></div>
+
+<!-- LÍNEA A -->
+<section id="linea-a">
+  <div class="gletter">A</div>
+  <div class="wrap sec-body">
+    <div class="sec-head reveal"><span class="kicker">Línea A · EE.UU.</span><h2 class="title">Thriller meets Rioja</h2>
+      <p class="lead">Los zombies emergen del viñedo, marchan al estilo <i>Thriller</i> y se convierten en vino premium. Esta línea está <b class="yellow">terminada y editada</b>.</p></div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">El anuncio principal</h3><span class="count">elige versión abajo</span></div>
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-master="master_34s" role="tab">Máster 34s · con final GLOW</button>
+        <button class="tab" data-master="master_28s" role="tab">Versión 28s · original</button>
+      </div>
+      <div class="player" id="master-player"></div>
+      <div class="note">La versión de <b>34s</b> añade la escena final de la etiqueta que brilla en la oscuridad — nuestro as en la manga.</div>
+      <div class="decision" data-d="d2"></div>
+    </div>
+
+    <div class="subsec reveal glow-zone">
+      <div class="subhead"><h3 class="subtitle glowc">La escena Glow</h3><span class="count" id="cnt-glow"></span></div>
+      <p class="lead" style="font-size:14.5px">La etiqueta luminiscente es el detalle que nadie más tiene: el vino que se enciende cuando se apaga la luz.</p>
+      <div class="grid g2" id="g-glow" style="margin-top:14px"></div>
+      <div class="note glow">Estas piezas funcionan solas como teaser en redes: oscuridad, glow… y logo.</div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Versión vertical para redes</h3></div>
+      <div class="two">
+        <div><div class="phone"><div class="player" style="border:none;border-radius:0" id="vertical-player"></div></div></div>
+        <div>
+          <p class="lead" style="font-size:14.5px;margin-top:14px">Montaje 9:16 pensado para TikTok, Reels y Shorts. Debajo, más tomas verticales listas para alimentar el calendario social.</p>
+          <div class="decision" data-d="d3" style="margin-top:18px"></div>
+        </div>
+      </div>
+      <div class="subhead" style="margin-top:26px"><h3 class="subtitle" style="font-size:17px">Tomas sociales (9:16)</h3><span class="count" id="cnt-vert"></span></div>
+      <div class="grid g3" id="g-vert"></div>
+    </div>
+  </div>
+</section>
+<div class="tape" role="presentation"></div>
+
+<!-- LÍNEA B -->
+<section id="linea-b" style="background:var(--ink-2)">
+  <div class="gletter">B</div>
+  <div class="wrap sec-body">
+    <div class="sec-head reveal"><span class="kicker">Línea B · Japón</span><h2 class="title">Gurokawa — la noche brilla</h2>
+      <p class="lead">La misma marca, traducida al lenguaje japonés: anime elegante, espíritus del vino y pétalos de sakura. Nada de terror — “creepy-cute” premium.</p></div>
+    <div class="grid g3 reveal" id="g-japon"></div>
+    <div class="note pink reveal" style="margin-top:18px">Los montajes 16:9, 9:16 y 1:1 están <b>listos para renderizar</b>: se produce la versión final del formato que elijas en la decisión de formatos de arriba.</div>
+  </div>
+</section>
+<div class="tape thin" role="presentation"></div>
+
+<!-- LÍNEA C -->
+<section id="linea-c">
+  <div class="gletter">C</div>
+  <div class="wrap sec-body">
+    <div class="sec-head reveal"><span class="kicker">Línea C · Cómic animado</span><h2 class="title">Sharp Zombie: un nuevo universo</h2>
+      <p class="lead">Un anuncio de 60 segundos estilo <i>Spider-Verse</i>: Leo y Mia, un picnic bajo la luna, y los vine-spirits que persiguen la botella. Pensado para Japón y para redes.</p></div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">La historia en 6 boards</h3></div>
+      <div class="grid g3" id="g-boards"></div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Keyframes generados</h3><span class="count" id="cnt-keys"></span></div>
+      <div class="grid g3" id="g-keys"></div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Clips piloto en movimiento</h3><span class="count" id="cnt-pilot"></span></div>
+      <div class="grid g2" id="g-pilot"></div>
+      <div class="note">Son pruebas de animación: validan el estilo antes de producir los 12 planos completos.</div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Los personajes</h3></div>
+      <div class="grid g2" id="g-sheets"></div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">¿Qué zombie te gusta más?</h3></div>
+      <p class="lead" style="font-size:14.5px;margin-bottom:14px">Cuatro direcciones de diseño para los vine-spirits. Toca tu favorita.</p>
+      <div class="decision" data-d="d4"></div>
+    </div>
+  </div>
+</section>
+<div class="tape" role="presentation"></div>
+
+<!-- TAGLINE -->
+<section id="tagline" style="background:var(--ink-2)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">La frase de la campaña</span><h2 class="title">¿Con cuál nos quedamos?</h2>
+      <p class="lead">Las dos funcionan en inglés para mercado internacional, con adaptación española en pequeño.</p></div>
+    <div class="decision reveal" data-d="d5"></div>
+  </div>
+</section>
+
+<!-- MARÍA -->
+<section id="maria">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Pieza extra</span><h2 class="title">El ad corporativo “SWE”</h2>
+      <p class="lead">Una pieza paralela más institucional, presentando SWE y el producto. Está en versión borrador (con marca de agua).</p></div>
+    <div class="two reveal">
+      <div class="player" id="maria-player"></div>
+      <div><div class="decision" data-d="d6" style="margin-top:0"></div></div>
+    </div>
+  </div>
+</section>
+<div class="tape thin" role="presentation"></div>
+
+<!-- RUMBO -->
+<section id="rumbo">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">⭐ La decisión madre</span><h2 class="title">Cojamos un rumbo</h2>
+      <p class="lead">Ya lo has visto todo. ¿Por dónde lanzamos primero? No es irreversible — es por dónde empezamos.</p></div>
+    <div class="decision reveal" data-d="d1"></div>
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Tus elecciones</h3><span class="count" id="votes-count"></span></div>
+      <div class="votes" id="votes"></div>
+      <label for="comments" style="display:block;margin-top:18px;font-size:13px;font-weight:700">¿Algo más que debamos saber?</label>
+      <textarea class="comments" id="comments" placeholder="Comentarios, dudas, ideas… (opcional)"></textarea>
+      <div class="btnrow">
+        <button class="btn primary" id="send-btn">📩 Enviar mis elecciones</button>
+        <button class="btn ghost" id="copy-btn">Copiar resumen</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section id="next" style="background:var(--ink-2)">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="kicker">Qué pasa después</span><h2 class="title">Hoja de ruta</h2></div>
+    <div class="road reveal">
+      <div class="item done"><div class="ph2">✓</div><div><h3>Producción del material</h3><p>Tres líneas creativas generadas, editadas y organizadas. Hecho.</p></div></div>
+      <div class="item"><div class="ph2">1</div><div><h3>Tu revisión</h3><p>Esta página. Tus elecciones marcan la dirección.</p></div></div>
+      <div class="item"><div class="ph2">2</div><div><h3>Render final del rumbo elegido</h3><p>Cerramos el máster definitivo y los formatos que marques.</p></div></div>
+      <div class="item"><div class="ph2">3</div><div><h3>Calendario y publicación</h3><p>Plan de publicación en redes y materiales para el lanzamiento.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;flex-direction:column;gap:16px">
+    <span class="wm" style="--wsz:22px"><span class="wm__sz">Sharp Zombie</span><span class="wm__tag">Uncork the legend</span></span>
+    <div class="pillrow">
+      <span class="pill"><span class="dot"></span>Spanish Wine Exclusives</span>
+      <span class="pill"><span class="dot"></span>Streamline3X · Dirección creativa</span>
+      <span class="pill"><span class="dot"></span>Julio 2026</span>
+    </div>
+    <p style="font-size:12px;color:rgba(255,255,255,.4)">Material de revisión interna. No compartir públicamente.</p>
+  </div>
+</footer>
+
+<!-- sticky / modal / toast / lightbox -->
+<div class="sticky" id="sticky"><div class="in">
+  <div class="prog"><span id="prog-n">0/6 decisiones</span><small>se guardan automáticamente</small></div>
+  <button class="btn primary" id="sticky-send">Enviar</button>
+</div></div>
+
+<div class="overlay" id="send-overlay" role="dialog" aria-modal="true">
+  <div class="sheet">
+    <button class="close" id="sheet-close" aria-label="Cerrar">×</button>
+    <h3>Tu selección</h3>
+    <p class="sub" id="sheet-sub"></p>
+    <pre id="sheet-summary"></pre>
+    <div class="btnrow">
+      <a class="btn primary" id="mailto-btn" href="#">📧 Enviar por email</a>
+      <button class="btn ghost" id="copy-btn2">Copiar texto</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">Guardado ✓</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lbx" id="lb-close" aria-label="Cerrar">×</button>
+  <button class="lnav lprev" id="lb-prev" aria-label="Anterior">‹</button>
+  <img id="lb-img" src="" alt="" />
+  <div class="cap" id="lb-cap"></div>
+  <button class="lnav lnext" id="lb-next" aria-label="Siguiente">›</button>
+</div>
+
+<script src="https://mohamedmadrazo.github.io/swe-sz-media/manifest.js"></script>
+<script>
+(function(){
+"use strict";
+var M = window.__SWE_MANIFEST__ || [];
+var PAGES = 'https://mohamedmadrazo.github.io/swe-sz-media';
+var byId = {}; M.forEach(function(a){ byId[a.id]=a; });
+
+/* ---------- estado ---------- */
+var KEY='swe_sz_review_v1';
+if(location.search.indexOf('reset=1')>-1){ try{localStorage.removeItem(KEY);}catch(e){} history.replaceState(null,'',location.pathname); }
+var state={};
+try{ state=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ state={}; }
+function save(){ state.ts=new Date().toISOString(); try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){} toast('Guardado ✓'); refreshVotes(); }
+
+/* ---------- decisiones ---------- */
+var DEC={
+ d1:{t:'¿Por dónde lanzamos?',q:'La línea con la que arrancamos la campaña.',opts:[
+   {v:'A',l:'EE.UU. — Thriller realista'},{v:'B',l:'Japón — Anime gurokawa'},
+   {v:'C',l:'Cómic Spider-Verse'},{v:'MIX',l:'Combinar por mercados'}]},
+ d2:{t:'Versión del máster',q:'El corte principal del anuncio de EE.UU.',opts:[
+   {v:'34s',l:'34s — con final glow ✦'},{v:'28s',l:'28s — original'}]},
+ d3:{t:'Formatos a publicar',q:'Puedes elegir varios.',multi:true,opts:[
+   {v:'16:9',l:'16:9 · YouTube / web'},{v:'9:16',l:'9:16 · TikTok / Reels'},{v:'1:1',l:'1:1 · feed'}]},
+ d4:{t:'Diseño de los vine-spirits',q:'La dirección de arte del zombie del cómic.',zdir:true,opts:[
+   {v:'A_CLASSIC',l:'A · Classic',s:'Zombie de cómic tradicional',img:'zdir_a_classic'},
+   {v:'B_VINE',l:'B · Vine',s:'Espíritu de la viña, sarmientos y uvas',img:'zdir_b_vine'},
+   {v:'C_COOL',l:'C · Cool',s:'Actitud, gafas y estilo urbano',img:'zdir_c_cool'},
+   {v:'D_YOKAI',l:'D · Yōkai',s:'Espíritu folclórico japonés',img:'zdir_d_yokai'}]},
+ d5:{t:'Tagline de la campaña',q:'La frase que firma cada pieza.',opts:[
+   {v:'legend',l:'“Uncork the Legend”'},{v:'glow',l:'“Uncork the Glow”'}]},
+ d6:{t:'¿Qué hacemos con esta pieza?',q:'El ad corporativo SWE en borrador.',opts:[
+   {v:'terminar',l:'Terminarla y publicarla'},{v:'aparcar',l:'Aparcarla de momento'},{v:'rehacer',l:'Rehacerla distinta'}]}
+};
+var LBL={d1:'Rumbo',d2:'Máster',d3:'Formatos',d4:'Zombie cómic',d5:'Tagline',d6:'Ad SWE'};
+function optLabel(d,v){ var o=DEC[d].opts.filter(function(x){return x.v===v;})[0]; return o?o.l:v; }
+
+function renderDecision(el){
+  var d=el.getAttribute('data-d'), cfg=DEC[d];
+  var h='<h4>'+cfg.t+'</h4><div class="dq">'+cfg.q+(cfg.multi?' <b>(multi)</b>':'')+'</div>';
+  if(cfg.zdir){
+    h+='<div class="zgrid">'+cfg.opts.map(function(o){
+      return '<button class="zopt" data-v="'+o.v+'" aria-pressed="false"><img loading="lazy" src="'+PAGES+'/img/'+o.img+'.webp" alt="'+o.l+'"><span class="zl"><span>'+o.l+'<small>'+o.s+'</small></span></span></button>';
+    }).join('')+'</div>';
+  } else {
+    h+='<div class="chips">'+cfg.opts.map(function(o){
+      return '<button class="opt" data-v="'+o.v+'" aria-pressed="false"><span class="mk"></span>'+o.l+'</button>';
+    }).join('')+'</div>';
+  }
+  el.innerHTML=h;
+  el.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-v]'); if(!b) return;
+    var v=b.getAttribute('data-v');
+    if(cfg.multi){
+      var cur=Array.isArray(state[d])?state[d]:[];
+      state[d]=cur.indexOf(v)>-1?cur.filter(function(x){return x!==v;}):cur.concat([v]);
+      if(!state[d].length) delete state[d];
+    } else { state[d]=(state[d]===v)?undefined:v; if(state[d]===undefined) delete state[d]; }
+    save(); paintDecision(el);
+  });
+  paintDecision(el);
+}
+function paintDecision(el){
+  var d=el.getAttribute('data-d'), cfg=DEC[d];
+  el.querySelectorAll('[data-v]').forEach(function(b){
+    var v=b.getAttribute('data-v');
+    var sel=cfg.multi?(Array.isArray(state[d])&&state[d].indexOf(v)>-1):(state[d]===v);
+    b.classList.toggle('sel',sel); b.setAttribute('aria-pressed',sel?'true':'false');
+  });
+}
+document.querySelectorAll('.decision').forEach(renderDecision);
+
+/* ---------- players ---------- */
+var currentVideo=null;
+function pauseOthers(v){ if(currentVideo&&currentVideo!==v){ currentVideo.pause(); } currentVideo=v; }
+function mountVideo(container,item,autoplay){
+  container.innerHTML='';
+  var v=document.createElement('video');
+  v.controls=true; v.playsInline=true; v.preload=autoplay?'auto':'none';
+  v.poster=item.poster||''; v.src=item.src;
+  v.setAttribute('playsinline','');
+  v.addEventListener('play',function(){ pauseOthers(v); });
+  container.appendChild(v);
+  if(autoplay){ v.play().catch(function(){}); }
+  return v;
+}
+function vcard(item,ar){
+  var el=document.createElement('article');
+  el.className='vcard'; el.style.setProperty('--ar',ar||(item.w>=item.h?'16/9':'9/16'));
+  el.innerHTML='<div class="ph ph-skel"><img loading="lazy" src="'+item.poster+'" alt="'+esc(item.desc)+'"><div class="play"></div><span class="dur">'+(item.dur?Math.round(item.dur)+'s':'')+'</span></div><div class="vcap">'+esc(item.desc)+'</div>';
+  var ph=el.querySelector('.ph');
+  ph.addEventListener('click',function(){
+    var holder=document.createElement('div'); holder.style.setProperty('--ar',el.style.getPropertyValue('--ar'));
+    el.replaceChild(holder,ph); mountVideo(holder,item,true);
+  });
+  return el;
+}
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+/* imágenes + lightbox */
+var lbList=[], lbIdx=0;
+function icard(item,ar){
+  var el=document.createElement('figure');
+  el.className='icard'; el.style.setProperty('--ar',ar||'16/9');
+  el.innerHTML='<div class="ph ph-skel"><img loading="lazy" src="'+item.src+'" alt="'+esc(item.desc)+'"></div><figcaption class="icap">'+esc(item.desc)+'</figcaption>';
+  var idx=lbList.length; lbList.push(item);
+  el.addEventListener('click',function(){ openLb(idx); });
+  return el;
+}
+var lb=document.getElementById('lightbox'), lbImg=document.getElementById('lb-img'), lbCap=document.getElementById('lb-cap');
+function openLb(i){ lbIdx=i; var it=lbList[i]; lbImg.src=it.src; lbImg.alt=it.desc; lbCap.textContent=it.desc; lb.classList.add('show'); }
+function lbMove(d){ lbIdx=(lbIdx+d+lbList.length)%lbList.length; openLb(lbIdx); }
+document.getElementById('lb-close').onclick=function(){ lb.classList.remove('show'); };
+document.getElementById('lb-prev').onclick=function(){ lbMove(-1); };
+document.getElementById('lb-next').onclick=function(){ lbMove(1); };
+lb.addEventListener('click',function(e){ if(e.target===lb) lb.classList.remove('show'); });
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){ lb.classList.remove('show'); overlay.classList.remove('show'); }
+  if(lb.classList.contains('show')){ if(e.key==='ArrowLeft')lbMove(-1); if(e.key==='ArrowRight')lbMove(1); }
+});
+
+/* ---------- montaje de galerías ---------- */
+function fill(id,items,maker,ar){ var c=document.getElementById(id); if(!c)return; items.forEach(function(it){ c.appendChild(maker(it,ar)); }); }
+function setCount(id,n,w){ var e=document.getElementById(id); if(e) e.textContent=n+' '+(w||'piezas'); }
+
+/* máster con tabs */
+var masterC=document.getElementById('master-player');
+function showMaster(id){ mountVideo(masterC,byId[id],false); }
+showMaster('master_34s');
+document.querySelectorAll('.tab[data-master]').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab[data-master]').forEach(function(x){x.classList.remove('on');});
+    t.classList.add('on'); showMaster(t.getAttribute('data-master'));
+  });
+});
+mountVideo(document.getElementById('vertical-player'),byId['vertical_9x16'],false);
+mountVideo(document.getElementById('maria-player'),byId['maria_ad_v1'],false);
+
+/* grupos línea A */
+var A=M.filter(function(a){return a.linea==='A_US'&&a.origen==='higgsfield';});
+var glow=A.filter(function(a){return a.escena==='GLOW'||a.escena==='VG2';});
+var vert=A.filter(function(a){return glow.indexOf(a)<0;});
+fill('g-glow',glow,vcard); setCount('cnt-glow',glow.length,'vídeos');
+fill('g-vert',vert,vcard,'9/16'); setCount('cnt-vert',vert.length,'tomas');
+
+/* Japón */
+var B=M.filter(function(a){return a.linea==='B_JAPON';}).sort(function(x,y){return x.escena<y.escena?-1:1;});
+fill('g-japon',B,vcard);
+
+/* Spider-Verse */
+var C=M.filter(function(a){return a.linea==='C_SPIDERVERSE';});
+var boards=C.filter(function(a){return /^B\d$/.test(a.escena);}).sort(function(x,y){return x.escena<y.escena?-1:1;});
+var keys=C.filter(function(a){return a.tipo==='imagen'&&a.origen==='higgsfield'&&a.escena!=='SHEET';})
+  .sort(function(x,y){return (parseInt(x.escena.replace(/\D/g,''))||99)-(parseInt(y.escena.replace(/\D/g,''))||99);});
+var pilots=C.filter(function(a){return a.tipo==='video';}).sort(function(x,y){return (parseInt(x.escena.replace(/\D/g,''))||99)-(parseInt(y.escena.replace(/\D/g,''))||99);});
+var sheets=C.filter(function(a){return a.escena==='SHEET';});
+fill('g-boards',boards,icard);
+fill('g-keys',keys,icard); setCount('cnt-keys',keys.length,'keyframes');
+fill('g-pilot',pilots,vcard); setCount('cnt-pilot',pilots.length,'clips');
+fill('g-sheets',sheets,icard);
+
+/* ---------- resumen de votos / envío ---------- */
+var order=['d1','d2','d3','d4','d5','d6'];
+function votesDone(){ return order.filter(function(d){return state[d]!==undefined&&state[d]!==null&&String(state[d]).length;}).length; }
+function refreshVotes(){
+  var c=document.getElementById('votes'); c.innerHTML='';
+  order.forEach(function(d){
+    var v=state[d], txt;
+    if(Array.isArray(v)) txt=v.join(' + ');
+    else if(v) txt=optLabel(d,v).replace(/^[^\w“"]*\s*/,'');
+    var row=document.createElement('div'); row.className='vote-row';
+    row.innerHTML='<b>'+LBL[d]+'</b><span class="st'+(v?'':' empty')+'">'+(v?esc(txt):'pendiente')+'</span>';
+    c.appendChild(row);
+  });
+  var n=votesDone();
+  document.getElementById('votes-count').textContent=n+'/6 decididas';
+  document.getElementById('prog-n').textContent=n+'/6 decisiones';
+  document.querySelectorAll('.decision').forEach(paintDecision);
+}
+var commentsEl=document.getElementById('comments');
+commentsEl.value=state.comments||'';
+var ct; commentsEl.addEventListener('input',function(){ state.comments=commentsEl.value; clearTimeout(ct); ct=setTimeout(function(){ save(); },700); });
+
+function summaryText(){
+  var lines=['SHARP ZOMBIE - Revisión de campaña','Respuestas de María · '+new Date().toLocaleDateString('es-ES'),''];
+  order.forEach(function(d,i){
+    var v=state[d], txt=Array.isArray(v)?v.join(' + '):(v?optLabel(d,v):'(pendiente)');
+    lines.push((i+1)+') '+LBL[d]+': '+txt.replace(/[“”]/g,'"'));
+  });
+  if(state.comments) lines.push('','Comentarios: '+state.comments);
+  return lines.join('\n');
+}
+var overlay=document.getElementById('send-overlay');
+function openSend(){
+  var n=votesDone();
+  document.getElementById('sheet-sub').textContent=n<6?('Te faltan '+(6-n)+' decisiones - puedes enviar igualmente.'):'Las 6 decisiones tomadas ✓';
+  document.getElementById('sheet-summary').textContent=summaryText();
+  var body=encodeURIComponent(summaryText());
+  document.getElementById('mailto-btn').href='mailto:demadrazobruno@gmail.com?subject='+encodeURIComponent('Revisión SHARP ZOMBIE - mis elecciones')+'&body='+body;
+  overlay.classList.add('show');
+}
+document.getElementById('send-btn').onclick=openSend;
+document.getElementById('sticky-send').onclick=openSend;
+document.getElementById('sheet-close').onclick=function(){ overlay.classList.remove('show'); };
+overlay.addEventListener('click',function(e){ if(e.target===overlay) overlay.classList.remove('show'); });
+function doCopy(){
+  var t=summaryText();
+  function ok(){ toast('Copiado ✓ pégalo en WhatsApp'); }
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(ok,function(){fallback();}); } else fallback();
+  function fallback(){ var ta=document.createElement('textarea'); ta.value=t; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');ok();}catch(e){} document.body.removeChild(ta); }
+}
+document.getElementById('copy-btn').onclick=doCopy;
+document.getElementById('copy-btn2').onclick=doCopy;
+
+/* ---------- toast ---------- */
+var toastEl=document.getElementById('toast'), tt;
+function toast(msg){ toastEl.textContent=msg; toastEl.classList.add('show'); clearTimeout(tt); tt=setTimeout(function(){toastEl.classList.remove('show');},1600); }
+
+/* ---------- sticky bar ---------- */
+var sticky=document.getElementById('sticky');
+var resumen=document.getElementById('resumen');
+var rumbo=document.getElementById('rumbo');
+window.addEventListener('scroll',function(){
+  var past=resumen.getBoundingClientRect().bottom<0;
+  var atRumbo=rumbo.getBoundingClientRect().top<window.innerHeight*0.5;
+  sticky.classList.toggle('show',past&&!atRumbo&&!overlay.classList.contains('show'));
+},{passive:true});
+
+/* ---------- reveals + nav activa ---------- */
+var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{threshold:.05,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+/* salvavidas: si algún reveal no dispara (navegadores raros, saltos de ancla), se muestra igual */
+setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); },1800);
+var navLinks=document.querySelectorAll('.nav a');
+var secIo=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting){
+    navLinks.forEach(function(a){ a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id); });
+  }});
+},{rootMargin:'-30% 0px -60% 0px'});
+['resumen','linea-a','linea-b','linea-c','tagline','rumbo'].forEach(function(id){ var el=document.getElementById(id); if(el) secIo.observe(el); });
+
+refreshVotes();
+})();
+</script>
+</body>
+</html>
