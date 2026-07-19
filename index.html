@@ -90,6 +90,9 @@ section{padding:clamp(44px,8vw,84px) 0;position:relative}
 .status.ok{color:#0a0a0a;background:var(--glow)}
 .status.mid{color:#0a0a0a;background:var(--caution)}
 .status.dev{color:#fff;background:#2c2c31;border:1px solid var(--border)}
+.aviso{margin-top:clamp(20px,3.5vw,30px);border:1.5px dashed rgba(255,214,0,.55);background:rgba(255,214,0,.07);border-radius:16px;padding:16px 18px;display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.88)}
+.aviso .ic{flex:none;font-size:20px;line-height:1.2}
+.aviso b{color:var(--caution)}
 
 /* ---------- steps (cómo funciona) ---------- */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,18px)}
@@ -274,6 +277,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
       <div class="card linea-card reveal"><div class="lc-k">B</div><h3>Japón — “Gurokawa”</h3><p>Anime creepy-cute para el mercado japonés. Escenas producidas; el montaje final se renderiza cuando elijas formato.</p><span class="status mid">Producida · montaje pendiente</span></div>
       <div class="card linea-card reveal"><div class="lc-k">C</div><h3>💥 Cómic — “Spider-Verse”</h3><p>Anuncio 60s estilo cómic animado. Storyboard completo, personajes y clips piloto ya generados.</p><span class="status dev">Storyboard + piloto</span></div>
     </div>
+    <div class="aviso reveal"><span class="ic">⚠️</span><div><b>Importante antes de mirar:</b> esto es material de <b>exploración creativa</b>, no las piezas definitivas. En varias tomas la botella o la etiqueta <b>no corresponden a la versión original del producto</b> — es normal en esta fase. Cuando elijas el rumbo, todas las piezas finales se <b>renderizan de nuevo con el producto corregido</b>. Aquí valoramos estilo, historia y formato.</div></div>
   </div>
 </section>
 <div class="tape thin" role="presentation"></div>
@@ -394,7 +398,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
 <section id="rumbo">
   <div class="wrap">
     <div class="sec-head reveal"><span class="kicker">⭐ La decisión madre</span><h2 class="title">Cojamos un rumbo</h2>
-      <p class="lead">Ya lo has visto todo. ¿Por dónde lanzamos primero? No es irreversible — es por dónde empezamos.</p></div>
+      <p class="lead">Ya lo has visto todo. ¿Por dónde lanzamos primero? No es irreversible — es por dónde empezamos. Y tranquila: los fallos de producto que hayas visto (botella o etiqueta no originales) <b class="yellow">se corrigen en el render final</b> del camino elegido.</p></div>
     <div class="decision reveal" data-d="d1"></div>
     <div class="subsec reveal">
       <div class="subhead"><h3 class="subtitle">Tus elecciones</h3><span class="count" id="votes-count"></span></div>
@@ -416,7 +420,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
     <div class="road reveal">
       <div class="item done"><div class="ph2">✓</div><div><h3>Producción del material</h3><p>Tres líneas creativas generadas, editadas y organizadas. Hecho.</p></div></div>
       <div class="item"><div class="ph2">1</div><div><h3>Tu revisión</h3><p>Esta página. Tus elecciones marcan la dirección.</p></div></div>
-      <div class="item"><div class="ph2">2</div><div><h3>Render final del rumbo elegido</h3><p>Cerramos el máster definitivo y los formatos que marques.</p></div></div>
+      <div class="item"><div class="ph2">2</div><div><h3>Render final del rumbo elegido</h3><p>Cerramos el máster definitivo y los formatos que marques, <b style="color:#fff">corrigiendo botella y etiqueta con el producto original</b> en todas las tomas.</p></div></div>
       <div class="item"><div class="ph2">3</div><div><h3>Calendario y publicación</h3><p>Plan de publicación en redes y materiales para el lanzamiento.</p></div></div>
     </div>
   </div>
