@@ -82,7 +82,7 @@ section{padding:clamp(44px,8vw,84px) 0;position:relative}
 .stat .n{font-family:var(--display);font-size:clamp(34px,8vw,66px);line-height:.92}
 .stat .n span{color:var(--caution)}
 .stat .l{margin-top:6px;font-size:12.5px;color:rgba(255,255,255,.7)}
-.lineas{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,2vw,18px);margin-top:clamp(20px,3.5vw,30px)}
+.lineas{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(10px,2vw,18px);margin-top:clamp(20px,3.5vw,30px)}
 .linea-card h3{font-size:15.5px;font-weight:700;margin-top:2px}
 .linea-card .lc-k{font-family:var(--display);font-size:26px;color:var(--caution);line-height:1}
 .linea-card p{margin-top:6px;font-size:13px;line-height:1.45;color:var(--muted)}
@@ -200,6 +200,15 @@ section{padding:clamp(44px,8vw,84px) 0;position:relative}
 .lightbox .lnav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid var(--border);color:#fff;font-size:20px}
 .lightbox .lprev{left:10px}.lightbox .lnext{right:10px}
 
+/* ---------- vídeo 1 · beats ---------- */
+.beats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.beat{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:12px 14px;position:relative}
+.beat .bt{font-family:var(--display);color:var(--caution);font-size:18px;line-height:1}
+.beat .bs{font-size:11.5px;color:rgba(255,255,255,.6);font-weight:600;margin-top:2px}
+.beat p{font-size:13px;color:var(--muted);line-height:1.45;margin-top:6px}
+.beat.dark{background:#0b1030;border-color:rgba(57,255,20,.35)}
+@media (max-width:720px){.beats{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.beats{grid-template-columns:1fr}}
 /* ---------- roadmap / footer ---------- */
 .road{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .road .item{background:var(--paper);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:flex-start}
@@ -246,6 +255,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
   <a href="#linea-a">Thriller EE.UU.</a>
   <a href="#linea-b">Anime Japón</a>
   <a href="#linea-c">💥 Cómic</a>
+  <a href="#video1">🌙 Vídeo 1</a>
   <a href="#tagline">Tagline</a>
   <a href="#rumbo">⭐ Decidir</a>
 </div></nav>
@@ -267,8 +277,8 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
   <div class="wrap">
     <div class="sec-head reveal"><span class="kicker">Resumen ejecutivo</span><h2 class="title">Una campaña real, no una maqueta</h2></div>
     <div class="stats reveal">
-      <div class="stat"><div class="n">3</div><div class="l">líneas creativas</div></div>
-      <div class="stat"><div class="n">56<span>+</span></div><div class="l">piezas producidas</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">líneas creativas</div></div>
+      <div class="stat"><div class="n">90<span>+</span></div><div class="l">piezas producidas</div></div>
       <div class="stat"><div class="n">30</div><div class="l">vídeos generados</div></div>
       <div class="stat"><div class="n">2</div><div class="l">másters listos</div></div>
     </div>
@@ -276,6 +286,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
       <div class="card linea-card reveal"><div class="lc-k">A</div><h3>EE.UU. — “Thriller meets Rioja”</h3><p>Terror glamuroso realista. Anuncio completo editado con música, en 16:9 y 9:16.</p><span class="status ok">Masterizada · lista</span></div>
       <div class="card linea-card reveal"><div class="lc-k">B</div><h3>Japón — “Gurokawa”</h3><p>Anime creepy-cute para el mercado japonés. Escenas producidas; el montaje final se renderiza cuando elijas formato.</p><span class="status mid">Producida · montaje pendiente</span></div>
       <div class="card linea-card reveal"><div class="lc-k">C</div><h3>💥 Cómic — “Spider-Verse”</h3><p>Anuncio 60s estilo cómic animado. Storyboard completo, personajes y clips piloto ya generados.</p><span class="status dev">Storyboard + piloto</span></div>
+      <div class="card linea-card reveal"><div class="lc-k">D</div><h3>🌙 Vídeo 1 — “After Dinner, Tokyo”</h3><p>Spot de 15 s en 3D estilizado tipo cómic: la etiqueta cobra vida tras la cena. Biblia, storyboard, keyframes y previz 3D listos.</p><span class="status dev">Pre-producción · previz</span></div>
     </div>
     <div class="aviso reveal"><span class="ic">⚠️</span><div><b>Importante antes de mirar:</b> esto es material de <b>exploración creativa</b>, no las piezas definitivas. En varias tomas la botella o la etiqueta <b>no corresponden a la versión original del producto</b> — es normal en esta fase. Cuando elijas el rumbo, todas las piezas finales se <b>renderizan de nuevo con el producto corregido</b>. Aquí valoramos estilo, historia y formato.</div></div>
   </div>
@@ -367,6 +378,70 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
       <div class="subhead"><h3 class="subtitle">¿Qué zombie te gusta más?</h3></div>
       <p class="lead" style="font-size:14.5px;margin-bottom:14px">Cuatro direcciones de diseño para los vine-spirits. Toca tu favorita.</p>
       <div class="decision" data-d="d4"></div>
+    </div>
+  </div>
+</section>
+<div class="tape" role="presentation"></div>
+
+<!-- VÍDEO 1 · TOKIO -->
+<section id="video1" style="background:var(--ink-2)">
+  <div class="gletter">D</div>
+  <div class="wrap sec-body">
+    <div class="sec-head reveal"><span class="kicker">Vídeo 1 · Tokio</span><h2 class="title">After Dinner, Tokyo</h2>
+      <p class="lead">15 segundos, vertical (con versión horizontal). Aya y Ren terminan de cenar a la luz de la luna en un apartamento de Tokio. Recogen los platos, se apaga la luz… y las siluetas de la etiqueta cobran vida: bailan, trepan por las copas y acaban borrachas en el vino. Look <b class="yellow">“Neon Graphic Cinematic 3D”</b>: animación 3D con sombreado de cómic. Sin diálogo, solo música.</p></div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">La historia en 9 beats</h3></div>
+      <div class="beats">
+        <div class="beat"><div class="bt">1</div><div class="bs">0.0–2.5 s · travelling</div><p>Sobremesa: Aya y Ren ríen con la última copa. Luna en el ventanal, botella y copas en primer término.</p></div>
+        <div class="beat"><div class="bt">2</div><div class="bs">2.5–4.0 s</div><p>El gato cruza en primer término y mira a cámara.</p></div>
+        <div class="beat"><div class="bt">3</div><div class="bs">4.0–5.5 s · 50 mm</div><p>Se levantan con los platos y salen por la puerta. Quedan la botella, el tapón, las copas y los palillos.</p></div>
+        <div class="beat dark"><div class="bt">4</div><div class="bs">5.5–6.5 s · corte + push-in</div><p>Clic. Se apaga la luz. Solo luna azul.</p></div>
+        <div class="beat dark"><div class="bt">5</div><div class="bs">6.5–8.5 s · macro</div><p>Los contornos de los zombies se encienden y laten. El agachado sigue dormido. Arranca la música.</p></div>
+        <div class="beat dark"><div class="bt">6</div><div class="bs">8.5–10.5 s · nivel mesa</div><p>Se despegan de la etiqueta y bajan a la mesa bailando en fila. La manita anda con los dedos.</p></div>
+        <div class="beat dark"><div class="bt">7</div><div class="bs">10.5–12.0 s</div><p>Fiesta: limbo bajo los palillos, uno pincha con el tapón de rosca, se congelan cuando pasa la sombra de Ren, el maneki-neko marca el ritmo.</p></div>
+        <div class="beat dark"><div class="bt">8</div><div class="bs">12.0–13.5 s · tilt-up</div><p>Trepan por los tallos de las copas y caen dentro del vino. La mano queda colgada del borde.</p></div>
+        <div class="beat dark"><div class="bt">9</div><div class="bs">13.5–15.0 s · pull-back</div><p>Borrachera: flotan, se tambalean, uno hace el muerto. El gato asoma. Plano final: botella y copas encendidas con la luna detrás.</p></div>
+      </div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Storyboard</h3><span class="count" id="cnt-v1-boards"></span></div>
+      <div class="grid g3" id="g-v1-boards"></div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Keyframes en el look final</h3><span class="count" id="cnt-v1-keys"></span></div>
+      <div class="grid g3" id="g-v1-keys"></div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">El producto, fiel en todas las tomas</h3><span class="count" id="cnt-v1-prod"></span></div>
+      <div class="grid g3" id="g-v1-prod"></div>
+      <div class="note glow">La etiqueta se mantiene exacta en cada toma; a oscuras solo brillan los contornos de los zombies, como en el producto real. La contraetiqueta mostrada es <b>provisional</b> hasta recibir el arte definitivo.</div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Apartamento, personajes y gato</h3></div>
+      <div class="grid g3" id="g-v1-env"></div>
+      <div class="grid g2" id="g-v1-sheets" style="margin-top:12px"></div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="subhead"><h3 class="subtitle">Previz 3D</h3><span class="count" id="cnt-v1-3d"></span></div>
+      <div class="grid g3" id="g-v1-3d"></div>
+      <div class="note">Maqueta 3D de la escena (cámara, apagón, coreografía) para fijar los tiempos antes de animar. Modelos descargables: <span id="v1-glb-links"></span></div>
+    </div>
+
+    <div class="subsec reveal" id="v1-drafts-wrap" hidden>
+      <div class="subhead"><h3 class="subtitle">Primeros borradores en movimiento</h3><span class="count" id="cnt-v1-drafts"></span></div>
+      <div class="grid g2" id="g-v1-drafts"></div>
+      <div class="note">Borradores a 480p para validar la animación; la versión final se renderiza a 1080p tras tu aprobación.</div>
+    </div>
+
+    <div class="subsec reveal">
+      <div class="decision" data-d="d7"></div>
+      <div class="decision" data-d="d8" style="margin-top:14px"></div>
     </div>
   </div>
 </section>
@@ -467,12 +542,18 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
   <button class="lnav lnext" id="lb-next" aria-label="Siguiente">›</button>
 </div>
 
-<script src="https://mohamedmadrazo.github.io/swe-sz-media/manifest.js"></script>
+<script>
+(function(){var q=new URLSearchParams(location.search),b=q.get('branch')||'';window.__SWE_BRANCH__=b;
+var src=b?('https://cdn.jsdelivr.net/gh/mohamedmadrazo/swe-sz-media@'+encodeURIComponent(b)+'/manifest.js'):'https://mohamedmadrazo.github.io/swe-sz-media/manifest.js';
+document.write('<script src="'+src+'"><\/script>');})();
+</script>
 <script>
 (function(){
 "use strict";
 var M = window.__SWE_MANIFEST__ || [];
-var PAGES = 'https://mohamedmadrazo.github.io/swe-sz-media';
+var PAGES_MAIN = 'https://mohamedmadrazo.github.io/swe-sz-media';
+var PAGES = window.__SWE_BRANCH__ ? 'https://cdn.jsdelivr.net/gh/mohamedmadrazo/swe-sz-media@'+encodeURIComponent(window.__SWE_BRANCH__) : PAGES_MAIN;
+if(PAGES!==PAGES_MAIN){ M.forEach(function(a){ ['src','poster'].forEach(function(k){ if(a[k]&&a[k].indexOf(PAGES_MAIN)===0) a[k]=PAGES+a[k].slice(PAGES_MAIN.length); }); }); }
 var byId = {}; M.forEach(function(a){ byId[a.id]=a; });
 
 /* ---------- estado ---------- */
@@ -499,9 +580,14 @@ var DEC={
  d5:{t:'Tagline de la campaña',q:'La frase que firma cada pieza.',opts:[
    {v:'legend',l:'“Uncork the Legend”'},{v:'glow',l:'“Uncork the Glow”'}]},
  d6:{t:'¿Qué hacemos con esta pieza?',q:'El ad corporativo SWE en borrador.',opts:[
-   {v:'terminar',l:'Terminarla y publicarla'},{v:'aparcar',l:'Aparcarla de momento'},{v:'rehacer',l:'Rehacerla distinta'}]}
+   {v:'terminar',l:'Terminarla y publicarla'},{v:'aparcar',l:'Aparcarla de momento'},{v:'rehacer',l:'Rehacerla distinta'}]},
+ d7:{t:'Vídeo 1 · Tokio: ¿seguimos por aquí?',q:'El storyboard y el look del spot de 15 s.',opts:[
+   {v:'aprobar',l:'Aprobar storyboard y pasar a animación'},{v:'ajustar',l:'Ajustar beats o ritmo'},{v:'otro',l:'Otro enfoque'}]},
+ d8:{t:'Easter eggs que quieres mantener',q:'Los guiños cómicos del vídeo 1. Puedes elegir varios.',multi:true,opts:[
+   {v:'gato',l:'🐈 El gato que mira a cámara'},{v:'dormido',l:'😴 El zombie agachado que no se despierta'},{v:'mano',l:'🖐 La manita que anda con los dedos'},
+   {v:'limbo',l:'🥢 Limbo bajo los palillos'},{v:'dj',l:'🎧 DJ con el tapón de rosca'},{v:'estatuas',l:'🗿 Se congelan al pasar Ren'},{v:'maneki',l:'🐱 Maneki-neko al compás'}]}
 };
-var LBL={d1:'Rumbo',d2:'Máster',d3:'Formatos',d4:'Zombie cómic',d5:'Tagline',d6:'Ad SWE'};
+var LBL={d1:'Rumbo',d2:'Máster',d3:'Formatos',d4:'Zombie cómic',d5:'Tagline',d6:'Ad SWE',d7:'Vídeo 1 Tokio',d8:'Easter eggs'};
 function optLabel(d,v){ var o=DEC[d].opts.filter(function(x){return x.v===v;})[0]; return o?o.l:v; }
 
 function renderDecision(el){
@@ -628,8 +714,31 @@ fill('g-keys',keys,icard); setCount('cnt-keys',keys.length,'keyframes');
 fill('g-pilot',pilots,vcard); setCount('cnt-pilot',pilots.length,'clips');
 fill('g-sheets',sheets,icard);
 
+/* Vídeo 1 · Tokio (línea D) */
+var D=M.filter(function(a){return a.linea==='D_TOKYO_V1';});
+function numOf(s){ return parseInt(String(s).replace(/\D/g,''))||99; }
+function arAuto(it){ return it.w&&it.h?(it.w>it.h?'16/9':(it.w===it.h?'1/1':'9/16')):'9/16'; }
+function icardAuto(it){ return icard(it,arAuto(it)); }
+function vcardAuto(it){ return vcard(it,arAuto(it)); }
+var dBoards=D.filter(function(a){return /^B\d+$/.test(a.escena);}).sort(function(x,y){return numOf(x.escena)-numOf(y.escena);});
+var dKeys=D.filter(function(a){return /^KF\d+$/.test(a.escena)||a.escena==='END';}).sort(function(x,y){return numOf(x.escena)-numOf(y.escena);});
+var dProd=D.filter(function(a){return a.escena==='PROD'&&a.tipo==='imagen';});
+var dEnv=D.filter(function(a){return a.escena==='ENV';});
+var dSheets=D.filter(function(a){return a.escena==='SHEET'||a.escena==='ZSHEET'||a.escena==='CAT';});
+var d3d=D.filter(function(a){return (a.escena==='PREVIZ'||a.escena==='TURN')&&a.tipo!=='3d';}).sort(function(x,y){return (x.tipo==='video'?0:1)-(y.tipo==='video'?0:1);});
+var dGlb=D.filter(function(a){return a.tipo==='3d';});
+var dDrafts=D.filter(function(a){return a.tipo==='video'&&(a.escena==='DRAFT'||a.escena==='GENJ');});
+fill('g-v1-boards',dBoards,icardAuto); setCount('cnt-v1-boards',dBoards.length,'boards');
+fill('g-v1-keys',dKeys,icardAuto); setCount('cnt-v1-keys',dKeys.length,'keyframes');
+fill('g-v1-prod',dProd,icardAuto); setCount('cnt-v1-prod',dProd.length,'tomas');
+fill('g-v1-env',dEnv,icardAuto);
+fill('g-v1-sheets',dSheets,icardAuto);
+d3d.forEach(function(it){ var c=document.getElementById('g-v1-3d'); if(c) c.appendChild(it.tipo==='video'?vcardAuto(it):icardAuto(it)); }); setCount('cnt-v1-3d',d3d.length,'piezas');
+var glbEl=document.getElementById('v1-glb-links'); if(glbEl) glbEl.innerHTML=dGlb.map(function(g){return '<a href="'+g.src+'" download style="color:var(--caution)">'+esc(g.id)+'.glb</a>';}).join(' · ')||'(pendiente)';
+if(dDrafts.length){ document.getElementById('v1-drafts-wrap').hidden=false; fill('g-v1-drafts',dDrafts,vcardAuto); setCount('cnt-v1-drafts',dDrafts.length,'clips'); }
+
 /* ---------- resumen de votos / envío ---------- */
-var order=['d1','d2','d3','d4','d5','d6'];
+var order=['d1','d2','d3','d4','d5','d6','d7','d8'];
 function votesDone(){ return order.filter(function(d){return state[d]!==undefined&&state[d]!==null&&String(state[d]).length;}).length; }
 function refreshVotes(){
   var c=document.getElementById('votes'); c.innerHTML='';
@@ -642,8 +751,8 @@ function refreshVotes(){
     c.appendChild(row);
   });
   var n=votesDone();
-  document.getElementById('votes-count').textContent=n+'/6 decididas';
-  document.getElementById('prog-n').textContent=n+'/6 decisiones';
+  document.getElementById('votes-count').textContent=n+'/'+order.length+' decididas';
+  document.getElementById('prog-n').textContent=n+'/'+order.length+' decisiones';
   document.querySelectorAll('.decision').forEach(paintDecision);
 }
 var commentsEl=document.getElementById('comments');
@@ -662,7 +771,7 @@ function summaryText(){
 var overlay=document.getElementById('send-overlay');
 function openSend(){
   var n=votesDone();
-  document.getElementById('sheet-sub').textContent=n<6?('Te faltan '+(6-n)+' decisiones - puedes enviar igualmente.'):'Las 6 decisiones tomadas ✓';
+  document.getElementById('sheet-sub').textContent=n<order.length?('Te faltan '+(order.length-n)+' decisiones - puedes enviar igualmente.'):'Las '+order.length+' decisiones tomadas ✓';
   document.getElementById('sheet-summary').textContent=summaryText();
   var body=encodeURIComponent(summaryText());
   document.getElementById('mailto-btn').href='mailto:demadrazobruno@gmail.com?subject='+encodeURIComponent('Revisión SHARP ZOMBIE - mis elecciones')+'&body='+body;
@@ -706,7 +815,7 @@ var secIo=new IntersectionObserver(function(es){
     navLinks.forEach(function(a){ a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id); });
   }});
 },{rootMargin:'-30% 0px -60% 0px'});
-['resumen','linea-a','linea-b','linea-c','tagline','rumbo'].forEach(function(id){ var el=document.getElementById(id); if(el) secIo.observe(el); });
+['resumen','linea-a','linea-b','linea-c','video1','tagline','rumbo'].forEach(function(id){ var el=document.getElementById(id); if(el) secIo.observe(el); });
 
 refreshVotes();
 })();
