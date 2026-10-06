@@ -425,6 +425,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
       <div class="subhead"><h3 class="subtitle">Apartamento, personajes y gato</h3></div>
       <div class="grid g3" id="g-v1-env"></div>
       <div class="grid g2" id="g-v1-sheets" style="margin-top:12px"></div>
+      <div class="note">v2 (6 oct): los keyframes iluminados se regeneraron con el look de la fase oscura como única clave de estilo, y los personajes y la gata se recortaron sobre fondo transparente para rodarlos como billboards en el set 3D.</div>
     </div>
 
     <div class="subsec reveal">
@@ -436,7 +437,7 @@ footer{padding:34px 0 46px;border-top:1px solid var(--border)}
     <div class="subsec reveal" id="v1-drafts-wrap" hidden>
       <div class="subhead"><h3 class="subtitle">Primeros borradores en movimiento</h3><span class="count" id="cnt-v1-drafts"></span></div>
       <div class="grid g2" id="g-v1-drafts"></div>
-      <div class="note">Borradores a 480p para validar la animación; la versión final se renderiza a 1080p tras tu aprobación.</div>
+      <div class="note">Borradores a 480p para validar la animación; la versión final se renderiza a 1080p tras tu aprobación. Los clips marcados v2 usan un solo look (fase oscura) para todo el spot y el rodaje de cámara virtual de 30 s en Blender como vídeo guía.</div>
     </div>
 
     <div class="subsec reveal">
@@ -724,7 +725,7 @@ var dBoards=D.filter(function(a){return /^B\d+$/.test(a.escena);}).sort(function
 var dKeys=D.filter(function(a){return /^KF\d+$/.test(a.escena)||a.escena==='END';}).sort(function(x,y){return numOf(x.escena)-numOf(y.escena);});
 var dProd=D.filter(function(a){return a.escena==='PROD'&&a.tipo==='imagen';});
 var dEnv=D.filter(function(a){return a.escena==='ENV';});
-var dSheets=D.filter(function(a){return a.escena==='SHEET'||a.escena==='ZSHEET'||a.escena==='CAT';});
+var dSheets=D.filter(function(a){return a.escena==='SHEET'||a.escena==='ZSHEET'||a.escena==='CAT'||a.escena==='CUT';});
 var d3d=D.filter(function(a){return (a.escena==='PREVIZ'||a.escena==='TURN')&&a.tipo!=='3d';}).sort(function(x,y){return (x.tipo==='video'?0:1)-(y.tipo==='video'?0:1);});
 var dGlb=D.filter(function(a){return a.tipo==='3d';});
 var dDrafts=D.filter(function(a){return a.tipo==='video'&&(a.escena==='DRAFT'||a.escena==='GENJ');});
